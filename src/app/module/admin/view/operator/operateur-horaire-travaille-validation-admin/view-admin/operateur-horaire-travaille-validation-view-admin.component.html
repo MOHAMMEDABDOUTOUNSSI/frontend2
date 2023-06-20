@@ -1,0 +1,40 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'operateurHoraireTravailleValidationTabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'operateurHoraireTravailleValidationTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'Horaire travaille validation' | translate}}</label>
+                        <p-dropdown [options]="horaireTravailleValidations" [(ngModel)]="item.horaireTravailleValidation" id="1" [disabled]="true" optionLabel="libelle" placeholder="{{'Horaire travaille validation' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'Operateur' | translate}}</label>
+                        <p-dropdown [options]="operateurs" [(ngModel)]="item.operateur" id="2" [disabled]="true" optionLabel="cin" placeholder="{{'Operateur' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'Heure debut' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Heure debut' | translate}}" autofocus  id="3" [(ngModel)]="item.heureDebut">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'Heure fin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Heure fin' | translate}}" autofocus  id="4" [(ngModel)]="item.heureFin">
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

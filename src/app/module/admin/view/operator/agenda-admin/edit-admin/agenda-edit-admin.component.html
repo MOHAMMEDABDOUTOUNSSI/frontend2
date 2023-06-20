@@ -1,0 +1,64 @@
+        <p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'agendaTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="{{'agendaTabPan' | translate}}">
+                        <div class="grid">
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="1">{{'agendaLibelle' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'agendaLibelle' | translate}}" id="1" [(ngModel)]="item.libelle"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validAgendaLibelle}"  />
+                                            <small class='p-error' *ngIf='!validAgendaLibelle'>Libelle est obligatoire.</small>
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="2">{{'agendaDaysOfMonth' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'agendaDaysOfMonth' | translate}}" id="2" [(ngModel)]="item.daysOfMonth"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validAgendaDaysOfMonth}"  />
+                                            <small class='p-error' *ngIf='!validAgendaDaysOfMonth'>DaysOfMonth est obligatoire.</small>
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="3">{{'agendaMonth' | translate}}<span style="color: red;">*</span></label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="3"
+                                                           placeholder="{{'agendaMonth' | translate}}" [(ngModel)]="item.month" [ngClass]="{'ng-invalid ng-dirty' : !validAgendaMonth}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validAgendaMonth'>Month est obligatoire.</small>
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="4">{{'agendaAnnee' | translate}}<span style="color: red;">*</span></label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="4"
+                                                           placeholder="{{'agendaAnnee' | translate}}" [(ngModel)]="item.annee" [ngClass]="{'ng-invalid ng-dirty' : !validAgendaAnnee}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validAgendaAnnee'>Annee est obligatoire.</small>
+                                        </div>
+
+                                    <div class="field col-11 md:col-5">
+                                            <label for="5">{{'agendaUniteAdministrative' | translate}}</label>
+                                            <p-dropdown   appendTo="body" [options]="uniteAdministratives" [(ngModel)]="item.uniteAdministrative" id="5"[filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true" optionLabel="libelle" placeholder="{{'agendaUniteAdministrative' | translate}}"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-footer">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>

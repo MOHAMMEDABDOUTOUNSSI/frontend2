@@ -1,0 +1,122 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'hopitalTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'hopitalTabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'hopitalLibelle' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'hopitalLibelle' | translate}}" id="1" [(ngModel)]="item.libelle"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validHopitalLibelle}"  />
+                                                    <small class='p-error' *ngIf='!validHopitalLibelle'>Libelle est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'hopitalCode' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'hopitalCode' | translate}}" id="2" [(ngModel)]="item.code"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validHopitalCode}"  />
+                                                    <small class='p-error' *ngIf='!validHopitalCode'>Code est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'hopitalDescription' | translate}}</label>
+                                                    <textarea id="3" pInputTextarea rows="5" cols="30" placeholder="{{'hopitalDescription' | translate}}"  [(ngModel)]="item.description"
+                                                             ></textarea>
+                                                    
+                                                </div>
+
+                                            <div class="field col-11 md:col-5">
+                                                <label for="4">{{'hopitalCentreHospitalierUniversitaire' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="centreHospitalierUniversitaires" [(ngModel)]="item.centreHospitalierUniversitaire" id="4" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'hopitalCentreHospitalierUniversitaire' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateCentreHospitalierUniversitaire('CentreHospitalierUniversitaire')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                </div>
+                            </p-tabPanel>
+                                    <p-tabPanel header="hopitalUniteAdministratives">
+                                        <p-tabView [(activeIndex)]="activeTab">
+                                            <p-tabPanel header="Création">
+                                                    <div class="grid">
+                                                                    <div class="field col-12 md:col-4">
+                                                                        <label for="1">Libelle<span style="color: red;">*</span></label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Libelle"
+                                                                               id="1" [(ngModel)]="uniteAdministrativesElement.libelle" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validUniteAdministrativesLibelle}"  >
+                                                                        <small class='p-error' *ngIf='!validUniteAdministrativesLibelle'>Libelle est obligatoire.</small>
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-4">
+                                                                        <label for="2">Code<span style="color: red;">*</span></label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Code"
+                                                                               id="2" [(ngModel)]="uniteAdministrativesElement.code" autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validUniteAdministrativesCode}"  >
+                                                                        <small class='p-error' *ngIf='!validUniteAdministrativesCode'>Code est obligatoire.</small>
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-4">
+                                                                        <label for="3">Description</label>
+                                                                        <input class="mb-2 mr-2" type="text" pInputText placeholder="Description"
+                                                                               id="3" [(ngModel)]="uniteAdministrativesElement.description" autofocus   >
+                                                                        
+                                                                    </div>
+                                                        <div class="field col-12 md:col-1">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addUniteAdministratives()"></button>
+                                                        </div>
+
+                                                    </div>
+                                            </p-tabPanel>
+                                            <p-tabPanel header="Liste {{item.uniteAdministratives?.length > 0 ? '(' + item.uniteAdministratives?.length + ')' : ''}}">
+                                                    <div class="card">
+                                                        <p-table [value]="item.uniteAdministratives" [scrollable]="true" scrollHeight="200px">
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                                <th>Libelle</th>
+                                                                                <th>Code</th>
+                                                                                <th>Description</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-p>
+                                                                <tr>
+                                                                                <td>{{p.libelle}}</td>
+                                                                                <td>{{p.code}}</td>
+                                                                                <td>{{p.description}}</td>
+                                                                    <td>
+                                                                        <button (click)="deleteUniteAdministrative(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                        <button (click)="editUniteAdministrative(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+
+                                            </p-tabPanel>
+                                        </p-tabView>
+                                    </p-tabPanel>
+
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+            <app-centre-hospitalier-universitaire-create-admin></app-centre-hospitalier-universitaire-create-admin>
+
+
+    </p-dialog>

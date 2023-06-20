@@ -1,0 +1,71 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'patientTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'patientTabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'patientIpp' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientIpp' | translate}}" id="1" [(ngModel)]="item.ipp"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validPatientIpp}"  />
+                                                    <small class='p-error' *ngIf='!validPatientIpp'>Ipp est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'patientAdresse' | translate}}<span style="color: red;">*</span></label>
+                                                    <textarea id="2" pInputTextarea rows="5" cols="30" placeholder="{{'patientAdresse' | translate}}"  [(ngModel)]="item.adresse"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validPatientAdresse}"  ></textarea>
+                                                    <small class='p-error' *ngIf='!validPatientAdresse'>Adresse est obligatoire.</small>
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'patientEmail' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientEmail' | translate}}" id="3" [(ngModel)]="item.email"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validPatientEmail}"  />
+                                                    <small class='p-error' *ngIf='!validPatientEmail'>Email est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'patientCin' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientCin' | translate}}" id="4" [(ngModel)]="item.cin"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validPatientCin}"  />
+                                                    <small class='p-error' *ngIf='!validPatientCin'>Cin est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="5">{{'patientCodeRamed' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'patientCodeRamed' | translate}}" id="5" [(ngModel)]="item.codeRamed"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>

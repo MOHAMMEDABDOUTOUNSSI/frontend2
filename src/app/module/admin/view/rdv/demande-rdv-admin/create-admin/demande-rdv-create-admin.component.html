@@ -1,0 +1,238 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'demandeRdvTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'demandeRdvTabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="1">{{'demandeRdvReference' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvReference' | translate}}" id="1" [(ngModel)]="item.reference"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvReference}"  />
+                                                    <small class='p-error' *ngIf='!validDemandeRdvReference'>Reference est obligatoire.</small>
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-2">
+                                                <label for="2">{{'demandeRdvPatient' | translate}}<span style="color: red;">*</span></label>
+                                                <p-dropdown  appendTo="body"  [options]="patients" [(ngModel)]="item.patient" id="2" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="ipp" placeholder="{{'demandeRdvPatient' | translate}}" [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvPatient}"  >
+                                                </p-dropdown>
+                                                <small class='p-error' *ngIf='!validDemandeRdvPatient'>Patient est obligatoire.</small>
+                                            </div>
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="3">{{'demandeRdvIpp' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvIpp' | translate}}" id="3" [(ngModel)]="item.ipp"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvIpp}"  />
+                                                    <small class='p-error' *ngIf='!validDemandeRdvIpp'>Ipp est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="4">{{'demandeRdvNom' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvNom' | translate}}" id="4" [(ngModel)]="item.nom"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvNom}"  />
+                                                    <small class='p-error' *ngIf='!validDemandeRdvNom'>Nom est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="5">{{'demandeRdvPrenom' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvPrenom' | translate}}" id="5" [(ngModel)]="item.prenom"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvPrenom}"  />
+                                                    <small class='p-error' *ngIf='!validDemandeRdvPrenom'>Prenom est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="6">{{'demandeRdvAdresse' | translate}}<span style="color: red;">*</span></label>
+                                                    <textarea id="6" pInputTextarea rows="5" cols="30" placeholder="{{'demandeRdvAdresse' | translate}}"  [(ngModel)]="item.adresse"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvAdresse}"  ></textarea>
+                                                    <small class='p-error' *ngIf='!validDemandeRdvAdresse'>Adresse est obligatoire.</small>
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="7">{{'demandeRdvEmail' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvEmail' | translate}}" id="7" [(ngModel)]="item.email"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvEmail}"  />
+                                                    <small class='p-error' *ngIf='!validDemandeRdvEmail'>Email est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="8">{{'demandeRdvCin' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvCin' | translate}}" id="8" [(ngModel)]="item.cin"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvCin}"  />
+                                                    <small class='p-error' *ngIf='!validDemandeRdvCin'>Cin est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="9">{{'demandeRdvCodeRamed' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvCodeRamed' | translate}}" id="9" [(ngModel)]="item.codeRamed"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="10">{{'demandeRdvObservation' | translate}}<span style="color: red;">*</span></label>
+                                                    <textarea id="10" pInputTextarea rows="5" cols="30" placeholder="{{'demandeRdvObservation' | translate}}"  [(ngModel)]="item.observation"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvObservation}"  ></textarea>
+                                                    <small class='p-error' *ngIf='!validDemandeRdvObservation'>Observation est obligatoire.</small>
+                                                </div>
+
+                                            <div class="field col-11 md:col-2">
+                                                <label for="11">{{'demandeRdvOperateur' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="operateurs" [(ngModel)]="item.operateur" id="11" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="cin" placeholder="{{'demandeRdvOperateur' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-2">
+                                                <label for="12">{{'demandeRdvCentreHospitalierUniversitaire' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="centreHospitalierUniversitaires" [(ngModel)]="item.centreHospitalierUniversitaire" id="12" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeRdvCentreHospitalierUniversitaire' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-2">
+                                                <label for="13">{{'demandeRdvHopital' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="hopitals" [(ngModel)]="item.hopital" id="13" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeRdvHopital' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-2">
+                                                <label for="14">{{'demandeRdvUniteAdministrative' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="uniteAdministratives" [(ngModel)]="item.uniteAdministrative" id="14" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeRdvUniteAdministrative' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-2">
+                                                <label for="15">{{'demandeRdvPrestation' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="prestations" [(ngModel)]="item.prestation" id="15" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeRdvPrestation' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-2">
+                                                <label for="16">{{'demandeRdvStatusRdv' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="statusRdvs" [(ngModel)]="item.statusRdv" id="16" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeRdvStatusRdv' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="17">{{'demandeRdvFicheReferencePath' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeRdvFicheReferencePath' | translate}}" id="17" [(ngModel)]="item.ficheReferencePath"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validDemandeRdvFicheReferencePath}"  />
+                                                    <small class='p-error' *ngIf='!validDemandeRdvFicheReferencePath'>FicheReferencePath est obligatoire.</small>
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-2">
+                                                <label for="18">{{'demandeRdvCauseRejetDemandeRdv' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="causeRejetDemandeRdvs" [(ngModel)]="item.causeRejetDemandeRdv" id="18" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeRdvCauseRejetDemandeRdv' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="19">{{'demandeRdvDateDemandeRdv' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="19"  [showTime]="true" [showSeconds]="false" placeholder="{{'demandeRdvDateDemandeRdv' | translate}}"  [(ngModel)]="item.dateDemandeRdv"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="20">{{'demandeRdvDatePrevu' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="20"  [showTime]="true" [showSeconds]="false" placeholder="{{'demandeRdvDatePrevu' | translate}}"  [(ngModel)]="item.datePrevu"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="21">{{'demandeRdvDateEffective' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="21"  [showTime]="true" [showSeconds]="false" placeholder="{{'demandeRdvDateEffective' | translate}}"  [(ngModel)]="item.dateEffective"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="22">{{'demandeRdvDateValidation' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="22"  [showTime]="true" [showSeconds]="false" placeholder="{{'demandeRdvDateValidation' | translate}}"  [(ngModel)]="item.dateValidation"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="23">{{'demandeRdvDateRejet' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="23"  [showTime]="true" [showSeconds]="false" placeholder="{{'demandeRdvDateRejet' | translate}}"  [(ngModel)]="item.dateRejet"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="24">{{'demandeRdvNombreReccurenceTotal' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="24" placeholder="{{'demandeRdvNombreReccurenceTotal' | translate}}" [(ngModel)]="item.nombreReccurenceTotal"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="25">{{'demandeRdvNombreReccurenceValide' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="25" placeholder="{{'demandeRdvNombreReccurenceValide' | translate}}" [(ngModel)]="item.nombreReccurenceValide"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="26">{{'demandeRdvNombreReccurenceRejet' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="26" placeholder="{{'demandeRdvNombreReccurenceRejet' | translate}}" [(ngModel)]="item.nombreReccurenceRejet"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                            <div class="field col-11 md:col-2">
+                                                <label for="27">{{'demandeRdvTemplateEmailConfirmation' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="templateEmailConfirmations" [(ngModel)]="item.templateEmailConfirmation" id="27" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeRdvTemplateEmailConfirmation' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>

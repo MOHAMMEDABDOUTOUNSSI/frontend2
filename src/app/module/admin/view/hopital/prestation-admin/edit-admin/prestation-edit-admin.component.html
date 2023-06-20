@@ -1,0 +1,74 @@
+        <p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'prestationTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="{{'prestationTabPan' | translate}}">
+                        <div class="grid">
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="1">{{'prestationLibelle' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'prestationLibelle' | translate}}" id="1" [(ngModel)]="item.libelle"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validPrestationLibelle}"  />
+                                            <small class='p-error' *ngIf='!validPrestationLibelle'>Libelle est obligatoire.</small>
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="2">{{'prestationCode' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'prestationCode' | translate}}" id="2" [(ngModel)]="item.code"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validPrestationCode}"  />
+                                            <small class='p-error' *ngIf='!validPrestationCode'>Code est obligatoire.</small>
+                                        </div>
+
+                                    <div class="field col-11 md:col-5">
+                                            <label for="3">{{'prestationTypePrestation' | translate}}<span style="color: red;">*</span></label>
+                                            <p-dropdown   appendTo="body" [options]="typePrestations" [(ngModel)]="item.typePrestation" id="3"[filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true" optionLabel="libelle" placeholder="{{'prestationTypePrestation' | translate}}" [ngClass]="{'ng-invalid ng-dirty' : !validPrestationTypePrestation}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validPrestationTypePrestation'>TypePrestation est obligatoire.</small>
+                                        </div>
+                                        <div class="col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateTypePrestation('TypePrestation')" class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="4">{{'prestationDureeEnMiniute' | translate}}<span style="color: red;">*</span></label>
+                                            <p-inputNumber  appendTo="body" class="mb-2 mr-2" id="4"
+                                                           placeholder="{{'prestationDureeEnMiniute' | translate}}" [(ngModel)]="item.dureeEnMiniute" [ngClass]="{'ng-invalid ng-dirty' : !validPrestationDureeEnMiniute}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validPrestationDureeEnMiniute'>DureeEnMiniute est obligatoire.</small>
+                                        </div>
+
+                                    <div class="field col-11 md:col-5">
+                                            <label for="5">{{'prestationUniteAdministrative' | translate}}</label>
+                                            <p-dropdown   appendTo="body" [options]="uniteAdministratives" [(ngModel)]="item.uniteAdministrative" id="5"[filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true" optionLabel="libelle" placeholder="{{'prestationUniteAdministrative' | translate}}"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateUniteAdministrative('UniteAdministrative')" class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-footer">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-type-prestation-create-admin></app-type-prestation-create-admin>
+                    <app-unite-administrative-create-admin></app-unite-administrative-create-admin>
+
+
+    </p-dialog>
